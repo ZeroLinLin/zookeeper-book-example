@@ -40,7 +40,7 @@ public class StandaloneServer extends Thread {
    
     final File confFile;
     final TestZKSMain main;
-    
+
     
     /*
      * Mock implementation of ZooKeeper Server.

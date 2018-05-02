@@ -744,12 +744,12 @@ public class Master implements Watcher, Closeable {
         public void processResult(int rc, String path, Object ctx, String name) {
             switch(Code.get(rc)) { 
             case CONNECTIONLOSS:
-                createAssignment(path, (byte[]) ctx);
+                createAssignment(path, (byte[]) ctx);//创建分配节点，路径形式：/assign/worker-id/task-num
                 
                 break;
             case OK:
                 LOG.info("Task assigned correctly: " + name);
-                deleteTask(name.substring( name.lastIndexOf("/") + 1));
+                deleteTask(name.substring( name.lastIndexOf("/") + 1));//成功分配的任务，删除/tasks下对应的任务节点
                 
                 break;
             case NODEEXISTS: 
